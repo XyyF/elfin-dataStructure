@@ -38,16 +38,25 @@ class LList {
     }
 
     /**
-     * 链表后驱插入节点
-     * @param newElement
-     * @param oldElement 旧节点
+     * 链表头部插入节点
+     * @param newElement 新节点数据
      */
-    push(newElement, oldElement) {
-        const oldNode = this.findNode(oldElement)
+    unshift(newElement) {
         const newNode = new Node(newElement)
         // tips: 注意操作顺序
-        newNode.next = oldNode.next
-        oldNode.next = newNode
+        newNode.next = this.head.next
+        this.head.next = newNode
+        return newElement
+    }
+
+    /**
+     * 链表头部删除节点
+     */
+    shift() {
+        if (!this.head.next) return void 0
+        const value = this.head.next.element
+        this.head.next = this.head.next.next
+        return value
     }
 
     /**
