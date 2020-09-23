@@ -64,6 +64,34 @@ class LList {
     }
 
     /**
+     * 链表尾部插入节点
+     */
+    push() {
+
+    }
+
+    /**
+     * 链表尾部删除节点
+     */
+    pop() {
+
+    }
+
+    /**
+     * 截取字符串
+     * @param start
+     * @param end
+     */
+    slice(start, end) {
+
+    }
+
+    /**
+     * 聚合操作
+     */
+    split() {}
+
+    /**
      * 展示链表中的节点值
      */
     display() {
