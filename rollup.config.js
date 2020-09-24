@@ -8,6 +8,6 @@ export default {
     output: {
         file: 'build/bundle.js',
         format: 'umd',
+        name: 'elfinDS',
     },
-    treeshake: false,
 };
