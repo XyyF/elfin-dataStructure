@@ -13,6 +13,7 @@ server_config.js
 GitCommitMessage.template
 __external-libraries
 package-lock.json
+build/*
 
 *.suo
 *.ntvs*

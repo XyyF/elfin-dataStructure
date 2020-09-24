@@ -115,3 +115,5 @@ class LList {
         }
     }
 }
+
+export default LList
