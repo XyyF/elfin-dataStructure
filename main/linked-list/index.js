@@ -68,7 +68,7 @@ class LList {
      */
     push(newElement) {
         let index = 0
-        let currentNode = this.head.next
+        let currentNode = this.head
         while(++index <= this.length) {
             currentNode = currentNode.next
         }
