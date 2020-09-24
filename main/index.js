@@ -4,8 +4,8 @@
 
 import LList from './linked-list/index'
 
-export const elfinLList = LList
+export const ElfinLList = LList
 
 export default {
-    elfinLList: LList,
+    ElfinLList: LList,
 }
