@@ -12,6 +12,7 @@ local_tools/
 server_config.js
 GitCommitMessage.template
 __external-libraries
+package-lock.json
 
 *.suo
 *.ntvs*

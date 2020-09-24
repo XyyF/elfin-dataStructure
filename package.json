@@ -1,0 +1,25 @@
+{
+  "name": "elfin-datastructure",
+  "version": "1.0.0",
+  "description": "收集算法研习之路的总结收录 -- By Me, Enjoy!",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/XyyF/elfin-dataStructure.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/XyyF/elfin-dataStructure/issues"
+  },
+  "homepage": "https://github.com/XyyF/elfin-dataStructure#readme",
+  "devDependencies": {
+    "jest": "^26.4.2"
+  }
+}
