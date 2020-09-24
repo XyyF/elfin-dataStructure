@@ -66,15 +66,28 @@ class LList {
     /**
      * 链表尾部插入节点
      */
-    push() {
-
+    push(newElement) {
+        let index = 0
+        let currentNode = this.head.next
+        while(++index <= this.length) {
+            currentNode = currentNode.next
+        }
+        currentNode.next = new Node(newElement)
+        return ++this.length
     }
 
     /**
      * 链表尾部删除节点
      */
     pop() {
-
+        let index = 0
+        let currentNode = this.head.next
+        while(++index < this.length) {
+            currentNode = currentNode.next
+        }
+        const value = currentNode.next.element
+        currentNode.next = null
+        return value
     }
 
     /**
