@@ -1,12 +1,24 @@
 /**
  * Created by rengar on 2020/9/20.
  */
+interface LLNode {
+    element: any,
+    next: LLNode,
+    prev: LLNode,
+}
+
+interface LList {
+    head: LLNode,
+    length: number,
+}
+
+
 /**
  * Node 链表节点
  * @param element 当前节点数据
  */
-class Node {
-    constructor(element) {
+class LLNode {
+    constructor(element: any) {
         this.element = element
         this.next = null
         this.prev = null
@@ -20,7 +32,7 @@ class Node {
 class LList {
     constructor() {
         const head = Symbol('head')
-        this.head = new Node(head)
+        this.head = new LLNode(head)
         this.length = 0
     }
 
@@ -42,8 +54,8 @@ class LList {
      * 链表头部插入节点
      */
     unshift() {
-        Array.prototype.forEach.call(arguments, (newElement) => {
-            const newNode = new Node(newElement)
+        Array.prototype.forEach.call(arguments, (newElement: any) => {
+            const newNode = new LLNode(newElement)
             // tips: 注意操作顺序
             newNode.next = this.head.next
             this.head.next = newNode
@@ -66,13 +78,13 @@ class LList {
     /**
      * 链表尾部插入节点
      */
-    push(newElement) {
+    push(newElement: any) {
         let index = 0
         let currentNode = this.head
         while(++index <= this.length) {
             currentNode = currentNode.next
         }
-        currentNode.next = new Node(newElement)
+        currentNode.next = new LLNode(newElement)
         return ++this.length
     }
 
@@ -95,7 +107,7 @@ class LList {
      * @param start
      * @param end
      */
-    slice(start, end) {
+    slice(start: number, end: number) {
 
     }
 
