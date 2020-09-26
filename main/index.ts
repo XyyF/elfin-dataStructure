@@ -2,7 +2,7 @@
  * Created by rengar on 2020/9/20.
  */
 
-import LList from './linked-list/index'
+import LList from './linked-list/1.linked-list'
 
 export const ElfinLList = LList
 

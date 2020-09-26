@@ -2,22 +2,20 @@
  * Created by rengar on 2020/9/20.
  */
 interface LLNode {
-    element: any,
-    next: LLNode,
-    prev: LLNode,
+    element: any;
+    next: LLNode;
+    prev: LLNode;
 }
-
-interface LList {
-    head: LLNode,
-    length: number,
-}
-
 
 /**
  * Node 链表节点
  * @param element 当前节点数据
  */
 class LLNode {
+    element: any;
+    next: LLNode;
+    prev: LLNode;
+    
     constructor(element: any) {
         this.element = element
         this.next = null
@@ -30,6 +28,9 @@ class LLNode {
  * @constructor
  */
 class LList {
+    head: LLNode;
+    length: number;
+    
     constructor() {
         const head = Symbol('head')
         this.head = new LLNode(head)
@@ -40,7 +41,7 @@ class LList {
      * 通过下标查找节点
      * @param element
      */
-    indexOf(element) {
+    indexOf(element: any) {
         let index = 0
         let currentNode = this.head.next
         while (currentNode && currentNode.element !== element) {
