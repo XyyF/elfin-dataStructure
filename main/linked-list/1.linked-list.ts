@@ -1,25 +1,23 @@
 /**
  * Created by rengar on 2020/9/20.
  */
-interface LLNode {
+interface LLNodeInterface {
     element: any;
-    next: LLNode | null;
-    prev: LLNode | null;
+    next: LLNodeInterface | null;
+    prev: LLNodeInterface | null;
 }
 
 /**
  * Node 链表节点
  * @param element 当前节点数据
  */
-class LLNode {
+class LLNode implements LLNodeInterface {
     element: any;
-    next: LLNode | null;
-    prev: LLNode | null;
+    next: LLNodeInterface | null = null;
+    prev: LLNodeInterface | null = null;
     
     constructor(element: any) {
         this.element = element
-        this.next = null
-        this.prev = null
     }
 }
 
@@ -27,13 +25,12 @@ class LLNode {
  * 链表容器 -- 单向链表
  */
 class LList {
-    head: LLNode;
-    length: number;
+    head: LLNodeInterface;
+    length: number = 0;
     
     constructor() {
         const head = Symbol('head')
         this.head = new LLNode(head)
-        this.length = 0
     }
 
     /**
@@ -94,15 +91,15 @@ class LList {
      */
     pop() {
         // TODO 逻辑处理
-        let index = 0
-        let currentNode = this.head.next
-        while(++index < this.length) {
-            currentNode = currentNode.next
-        }
-        if (!currentNode) return void 0
-        const value = currentNode.next.element
-        currentNode.next = null
-        return value
+        // let index = 0
+        // let currentNode = this.head.next
+        // while(++index < this.length) {
+        //     currentNode = currentNode.next
+        // }
+        // if (!currentNode) return void 0
+        // const value = currentNode.next.element
+        // currentNode.next = null
+        // return value
     }
 
     /**
