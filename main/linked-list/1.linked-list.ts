@@ -3,8 +3,8 @@
  */
 interface LLNode {
     element: any;
-    next: LLNode;
-    prev: LLNode;
+    next: LLNode | null;
+    prev: LLNode | null;
 }
 
 /**
@@ -13,8 +13,8 @@ interface LLNode {
  */
 class LLNode {
     element: any;
-    next: LLNode;
-    prev: LLNode;
+    next: LLNode | null;
+    prev: LLNode | null;
     
     constructor(element: any) {
         this.element = element
@@ -25,7 +25,6 @@ class LLNode {
 
 /**
  * 链表容器 -- 单向链表
- * @constructor
  */
 class LList {
     head: LLNode;
@@ -82,8 +81,9 @@ class LList {
     push(newElement: any) {
         let index = 0
         let currentNode = this.head
-        while(++index <= this.length) {
+        while(currentNode && currentNode.next) {
             currentNode = currentNode.next
+            index++
         }
         currentNode.next = new LLNode(newElement)
         return ++this.length
@@ -93,11 +93,13 @@ class LList {
      * 链表尾部删除节点
      */
     pop() {
+        // TODO 逻辑处理
         let index = 0
         let currentNode = this.head.next
         while(++index < this.length) {
             currentNode = currentNode.next
         }
+        if (!currentNode) return void 0
         const value = currentNode.next.element
         currentNode.next = null
         return value
