@@ -1,7 +1,10 @@
 {
     "compilerOptions": {
         "sourceMap": true,
+        // 严格校验null值场景
         "strictNullChecks": true,
+        // 严格校验隐式any类型
+        "noImplicitAny": true,
         "types": ["node"],
         "outDir": "./build",
         "target": "es6"

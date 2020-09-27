@@ -1,4 +1,4 @@
-import {ElfinLList} from '@/index'
+import {ElfinLList} from '@/build/bundle'
 
 import helper from './__utils'
 

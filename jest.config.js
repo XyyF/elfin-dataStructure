@@ -9,7 +9,7 @@ module.exports = {
         '^.+\\.js$': '<rootDir>/node_modules/babel-jest',
     },
     moduleNameMapper: {
-        '^@/(.*)$': '<rootDir>/main/$1',
+        '^@/(.*)$': '<rootDir>/$1',
     },
     testRegex: '.+?\\.test\\.js$',
     verbose: true,
