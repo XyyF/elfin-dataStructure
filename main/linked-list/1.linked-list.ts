@@ -35,9 +35,8 @@ class LList {
 
     /**
      * 通过下标查找节点
-     * @param element
      */
-    indexOf(element: any) {
+    indexOf(element: any): number {
         let index = 0
         let currentNode = this.head.next
         while (currentNode && currentNode.element !== element) {
@@ -50,7 +49,7 @@ class LList {
     /**
      * 链表头部插入节点
      */
-    unshift() {
+    unshift(): number {
         Array.prototype.forEach.call(arguments, (newElement: any) => {
             const newNode = new LLNode(newElement)
             // tips: 注意操作顺序
@@ -64,7 +63,7 @@ class LList {
     /**
      * 链表头部删除节点
      */
-    shift() {
+    shift(): any {
         if (!this.head.next) return void 0
         const value = this.head.next.element
         this.head.next = this.head.next.next
@@ -75,7 +74,7 @@ class LList {
     /**
      * 链表尾部插入节点
      */
-    push(newElement: any) {
+    push(newElement: any): number {
         let index = 0
         let currentNode = this.head
         while(currentNode && currentNode.next) {
@@ -115,6 +114,22 @@ class LList {
      * 聚合操作
      */
     split() {}
+
+    /**
+     * 是否包含某个元素
+     */
+    includes(element: any, index: number = 0): boolean {
+        let currentIdx = 0
+        let currentNode = this.head.next
+        while(currentNode) {
+            if (currentIdx >= index && currentNode.element === element) {
+                return true
+            }
+            currentNode = currentNode.next
+            currentIdx++
+        }
+        return false
+    }
 
     /**
      * 展示链表中的节点值
