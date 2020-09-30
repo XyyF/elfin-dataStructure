@@ -89,31 +89,20 @@ class LList {
      * 链表尾部删除节点
      */
     pop() {
-        // TODO 逻辑处理
-        // let index = 0
-        // let currentNode = this.head.next
-        // while(++index < this.length) {
-        //     currentNode = currentNode.next
-        // }
-        // if (!currentNode) return void 0
-        // const value = currentNode.next.element
-        // currentNode.next = null
-        // return value
+        if (this.length === 0) return void 0
+        let index = 0
+        let currentNode = <LLNodeInterface | null>this.head
+        while(++index < this.length && currentNode) {
+            currentNode = currentNode.next
+        }
+        if (currentNode && currentNode.next) {
+            const value = currentNode.next.element
+            currentNode.next = null
+            this.length--
+            return value
+        }
+        return void 0
     }
-
-    /**
-     * 截取字符串
-     * @param start
-     * @param end
-     */
-    slice(start: number, end: number) {
-
-    }
-
-    /**
-     * 聚合操作
-     */
-    split() {}
 
     /**
      * 是否包含某个元素
