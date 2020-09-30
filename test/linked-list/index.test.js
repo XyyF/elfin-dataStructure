@@ -36,5 +36,12 @@ describe('[LList] 单向链表', () => {
             expect(llistByIncludes.includes('1')).toBe(true)
             expect(llistByIncludes.includes('2')).toBe(false)
         })
+
+        it('下标', () => {
+            llistByIncludes.push(1)
+            expect(llistByIncludes.includes(1, 1)).toBe(false)
+            llistByIncludes.push(2)
+            expect(llistByIncludes.includes(2, 1)).toBe(true)
+        })
     })
 })
