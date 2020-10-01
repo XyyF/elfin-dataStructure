@@ -1,15 +1,15 @@
-import {ElfinLList} from '@/build/bundle'
+import {ElfinSignleSideLList} from '@/build/bundle'
 
 import helper from './__utils'
 
-describe('[LList] 单向链表', () => {
-    const llist = new ElfinLList()
+describe('[ElfinSignleSideLList] 单向链表', () => {
+    const llist = new ElfinSignleSideLList()
 
     describe('实例func__push', () => {
         let llistByPush = null
 
         beforeEach(() => {
-            llistByPush = new ElfinLList()
+            llistByPush = new ElfinSignleSideLList()
         })
 
         it('push', () => {
@@ -28,7 +28,7 @@ describe('[LList] 单向链表', () => {
         let llistByPop = null
 
         beforeEach(() => {
-            llistByPop = new ElfinLList()
+            llistByPop = new ElfinSignleSideLList()
         })
 
         it('pop', () => {
@@ -53,7 +53,7 @@ describe('[LList] 单向链表', () => {
         let llistByUnshift = null
 
         beforeEach(() => {
-            llistByUnshift = new ElfinLList()
+            llistByUnshift = new ElfinSignleSideLList()
         })
 
         it('unshift', () => {
@@ -72,7 +72,7 @@ describe('[LList] 单向链表', () => {
         let llistByShift = null
 
         beforeEach(() => {
-            llistByShift = new ElfinLList()
+            llistByShift = new ElfinSignleSideLList()
         })
 
         it('shift', () => {
@@ -97,7 +97,7 @@ describe('[LList] 单向链表', () => {
         let llistByIncludes = null
 
         beforeEach(() => {
-            llistByIncludes = new ElfinLList()
+            llistByIncludes = new ElfinSignleSideLList()
         })
 
         it('空链表', () => {

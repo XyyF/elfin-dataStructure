@@ -2,10 +2,12 @@
  * Created by rengar on 2020/9/20.
  */
 
-import LList from './linked-list/1.linked-list'
+import SingleSide from './linked-list/single-side'
 
-export const ElfinLList = LList
+export const SignleSideLList = SingleSide
+export const ElfinSignleSideLList = SingleSide
 
 export default {
-    ElfinLList: LList,
+    SingleSideLList: SingleSide,
+    ElfinSignleSideLList: SingleSide,
 }
