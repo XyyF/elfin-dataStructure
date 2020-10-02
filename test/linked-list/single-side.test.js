@@ -1,7 +1,5 @@
 import {ElfinSignleSideLList} from '@/build/bundle'
 
-import helper from './__utils'
-
 describe('[ElfinSignleSideLList] 单向链表', () => {
     const llist = new ElfinSignleSideLList()
 
@@ -16,11 +14,11 @@ describe('[ElfinSignleSideLList] 单向链表', () => {
             llistByPush.push(1)
             expect(llistByPush.length).toBe(1)
             expect(llistByPush.head.next.element).toBe(1)
-            expect(helper.transLListToArray(llistByPush)).toEqual([1])
+            expect(llistByPush.transLListToArray(llistByPush)).toEqual([1])
 
             llistByPush.push(2)
             expect(llistByPush.length).toBe(2)
-            expect(helper.transLListToArray(llistByPush)).toEqual([1, 2])
+            expect(llistByPush.transLListToArray(llistByPush)).toEqual([1, 2])
         })
     })
 
@@ -37,15 +35,15 @@ describe('[ElfinSignleSideLList] 单向链表', () => {
 
             expect(llistByPop.pop()).toBe(2)
             expect(llistByPop.length).toBe(1)
-            expect(helper.transLListToArray(llistByPop)).toEqual([1])
+            expect(llistByPop.transLListToArray(llistByPop)).toEqual([1])
 
             expect(llistByPop.pop()).toBe(1)
             expect(llistByPop.length).toBe(0)
-            expect(helper.transLListToArray(llistByPop)).toEqual([])
+            expect(llistByPop.transLListToArray(llistByPop)).toEqual([])
 
             expect(llistByPop.pop()).toBe(undefined)
             expect(llistByPop.length).toBe(0)
-            expect(helper.transLListToArray(llistByPop)).toEqual([])
+            expect(llistByPop.transLListToArray(llistByPop)).toEqual([])
         })
     })
 
@@ -60,11 +58,11 @@ describe('[ElfinSignleSideLList] 单向链表', () => {
             llistByUnshift.unshift(1)
             expect(llistByUnshift.length).toBe(1)
             expect(llistByUnshift.head.next.element).toBe(1)
-            expect(helper.transLListToArray(llistByUnshift)).toEqual([1])
+            expect(llistByUnshift.transLListToArray(llistByUnshift)).toEqual([1])
 
             llistByUnshift.unshift(2)
             expect(llistByUnshift.length).toBe(2)
-            expect(helper.transLListToArray(llistByUnshift)).toEqual([2, 1])
+            expect(llistByUnshift.transLListToArray(llistByUnshift)).toEqual([2, 1])
         })
     })
 
@@ -81,15 +79,15 @@ describe('[ElfinSignleSideLList] 单向链表', () => {
 
             expect(llistByShift.shift()).toBe(2)
             expect(llistByShift.length).toBe(1)
-            expect(helper.transLListToArray(llistByShift)).toEqual([1])
+            expect(llistByShift.transLListToArray(llistByShift)).toEqual([1])
 
             expect(llistByShift.shift()).toBe(1)
             expect(llistByShift.length).toBe(0)
-            expect(helper.transLListToArray(llistByShift)).toEqual([])
+            expect(llistByShift.transLListToArray(llistByShift)).toEqual([])
 
             expect(llistByShift.shift()).toBe(undefined)
             expect(llistByShift.length).toBe(0)
-            expect(helper.transLListToArray(llistByShift)).toEqual([])
+            expect(llistByShift.transLListToArray(llistByShift)).toEqual([])
         })
     })
 

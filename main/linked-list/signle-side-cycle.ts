@@ -1,14 +1,17 @@
 /**
- * Created by rengar on 2020/9/20.
+ * Created by rengar on 2020/10/2.
  */
 import {LLNode, LLNodeInterface, LinkedList} from './index'
 
 /**
- * 链表容器 -- 单向链表
+ * 链表容器 -- 单向循环链表
  */
-export default class SSLList extends LinkedList {
+export default class SSCLList extends LinkedList {
     constructor() {
         super()
+        // 循环链表特点
+        this.head.next = this.tail
+        this.tail.next = this.head
     }
     /**
      * 通过下标查找节点
@@ -20,7 +23,6 @@ export default class SSLList extends LinkedList {
             currentNode = currentNode.next
             index++
         }
-
         return currentNode === null ? -1 : index
     }
 
@@ -35,7 +37,6 @@ export default class SSLList extends LinkedList {
             this.head.next = newNode
             this.length++
         })
-
         return this.length
     }
 
@@ -43,13 +44,10 @@ export default class SSLList extends LinkedList {
      * 链表头部删除节点
      */
     shift(): any {
-        if (this.length === 0) return void 0
-        // 如果length > 0，那么head之后是存在元素节点的
-        const headNode = this.head.next as LLNodeInterface
-        const value = headNode.element
-        this.head.next = headNode.next
+        if (!this.head.next) return void 0
+        const value = this.head.next.element
+        this.head.next = this.head.next.next
         this.length--
-
         return value
     }
 
@@ -59,14 +57,11 @@ export default class SSLList extends LinkedList {
     push(newElement: any): number {
         let index = 0
         let currentNode = this.head
-        while(index < this.length) {
-            currentNode = currentNode.next as LLNodeInterface
+        while(currentNode && currentNode.next) {
+            currentNode = currentNode.next
             index++
         }
-        const newNode = new LLNode(newElement)
-        newNode.next = this.tail
-        currentNode.next = newNode
-
+        currentNode.next = new LLNode(newElement)
         return ++this.length
     }
 
@@ -76,19 +71,17 @@ export default class SSLList extends LinkedList {
     pop() {
         if (this.length === 0) return void 0
         let index = 0
-        let currentNode = this.head.next
+        let currentNode = <LLNodeInterface | null>this.head
         while(++index < this.length && currentNode) {
-            console.log(111, index);
-            
-            currentNode = currentNode.next as LLNodeInterface
+            currentNode = currentNode.next
         }
-        if (currentNode === null) return void 0
-
-        const value = currentNode.element
-        currentNode.next = this.tail
-        this.length--
-            
-        return value
+        if (currentNode && currentNode.next) {
+            const value = currentNode.next.element
+            currentNode.next = null
+            this.length--
+            return value
+        }
+        return void 0
     }
 
     /**
@@ -108,17 +101,13 @@ export default class SSLList extends LinkedList {
     }
 
     /**
-     * 将链表数据转化为数据结构
+     * 展示链表中的节点值
      */
-    transLListToArray() {
-        const arr = []
-        let index = 0
-        let currentNode = this.head
-        while (index < this.length) {
-            currentNode = currentNode.next as LLNodeInterface
-            arr.push(currentNode.element)
-            index++
+    display() {
+        let currentNode = this.head.next
+        while (currentNode) {
+            console.log('display:' + currentNode.element)
+            currentNode = currentNode.next
         }
-        return arr
     }
 }
