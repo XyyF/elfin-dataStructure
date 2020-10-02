@@ -22,9 +22,9 @@ export class LLNode implements LLNodeInterface {
 }
 
 export class LinkedList {
-    // 头节点
+    // 虚拟头节点
     head: LLNodeInterface;
-    // 尾节点
+    // 虚拟尾节点
     tail: LLNodeInterface;
     // 真实节点长度
     length: number = 0;

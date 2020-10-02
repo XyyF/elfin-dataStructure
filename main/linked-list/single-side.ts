@@ -78,8 +78,6 @@ export default class SSLList extends LinkedList {
         let index = 0
         let currentNode = this.head.next
         while(++index < this.length && currentNode) {
-            console.log(111, index);
-            
             currentNode = currentNode.next as LLNodeInterface
         }
         if (currentNode === null) return void 0
