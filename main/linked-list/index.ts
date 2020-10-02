@@ -18,6 +18,12 @@ export class LLNode implements LLNodeInterface {
     }
 }
 
-class LinkedList {
-    constructor() {}
+export class LinkedList {
+    head: LLNodeInterface;
+    length: number = 0;
+    
+    constructor() {
+        const head = Symbol('head')
+        this.head = new LLNode(head)
+    }
 }

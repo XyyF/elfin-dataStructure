@@ -1,20 +1,15 @@
 /**
  * Created by rengar on 2020/9/20.
  */
-import {LLNode, LLNodeInterface} from './index'
+import {LLNode, LLNodeInterface, LinkedList} from './index'
 
 /**
  * 链表容器 -- 单向链表
  */
-class LList {
-    head: LLNodeInterface;
-    length: number = 0;
-    
+export default class SSLList extends LinkedList {
     constructor() {
-        const head = Symbol('head')
-        this.head = new LLNode(head)
+        super()
     }
-
     /**
      * 通过下标查找节点
      */
@@ -113,5 +108,3 @@ class LList {
         }
     }
 }
-
-export default LList
