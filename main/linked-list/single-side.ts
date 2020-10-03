@@ -7,6 +7,9 @@ import {LLNode, LLNodeInterface, LinkedList} from './index'
  * 链表容器 -- 单向链表
  */
 export default class SSLList extends LinkedList {
+    /**
+     * 使用head占位头节点
+     */
     constructor() {
         super()
     }

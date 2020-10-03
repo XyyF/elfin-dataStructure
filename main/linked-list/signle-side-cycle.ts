@@ -7,6 +7,10 @@ import {LLNode, LLNodeInterface, LinkedList} from './index'
  * 链表容器 -- 单向循环链表
  */
 export default class SSCLList extends LinkedList {
+    /**
+     * 使用head占位头节点
+     * 使用tail占位尾节点
+     */
     constructor() {
         super()
         // 循环链表特点
@@ -58,8 +62,8 @@ export default class SSCLList extends LinkedList {
     push(newElement: any): number {
         let index = 0
         let currentNode = this.head
-        while(currentNode && currentNode.next) {
-            currentNode = currentNode.next
+        while(index < this.length) {
+            currentNode = currentNode.next as LLNodeInterface
             index++
         }
         const newNode = new LLNode(newElement)
@@ -88,13 +92,17 @@ export default class SSCLList extends LinkedList {
     }
 
     /**
-     * 展示链表中的节点值
+     * 将链表数据转化为数据结构
      */
-    display() {
-        let currentNode = this.head.next
-        while (currentNode) {
-            console.log('display:' + currentNode.element)
-            currentNode = currentNode.next
+    transToArray() {
+        const arr = []
+        let index = 0
+        let currentNode = this.head
+        while (index < this.length) {
+            currentNode = currentNode.next as LLNodeInterface
+            arr.push(currentNode.element)
+            index++
         }
+        return arr
     }
 }
