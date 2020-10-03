@@ -63,9 +63,7 @@ export default class SSLList extends LinkedList {
             currentNode = currentNode.next as LLNodeInterface
             index++
         }
-        const newNode = new LLNode(newElement)
-        newNode.next = null
-        currentNode.next = newNode
+        currentNode.next = new LLNode(newElement)
 
         return ++this.length
     }
@@ -87,22 +85,6 @@ export default class SSLList extends LinkedList {
         this.length--
             
         return value
-    }
-
-    /**
-     * 是否包含某个元素
-     */
-    includes(element: any, index: number = 0): boolean {
-        let currentIdx = 0
-        let currentNode = this.head.next
-        while(currentNode) {
-            if (currentIdx >= index && currentNode.element === element) {
-                return true
-            }
-            currentNode = currentNode.next
-            currentIdx++
-        }
-        return false
     }
 
     /**

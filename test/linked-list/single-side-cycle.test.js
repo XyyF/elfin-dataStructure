@@ -1,13 +1,13 @@
-import {SSLList} from '@/build/bundle'
+import {SSCLList} from '@/build/bundle'
 
-describe('[SSLList] 单向链表', () => {
-    const llist = new SSLList()
+describe('[SSCLList] 单向循环链表', () => {
+    const llist = new SSCLList()
 
     describe('实例func__push', () => {
         let llistByPush = null
 
         beforeEach(() => {
-            llistByPush = new SSLList()
+            llistByPush = new SSCLList()
         })
 
         it('push', () => {
@@ -26,7 +26,7 @@ describe('[SSLList] 单向链表', () => {
         let llistByPop = null
 
         beforeEach(() => {
-            llistByPop = new SSLList()
+            llistByPop = new SSCLList()
         })
 
         it('pop', () => {
@@ -51,7 +51,7 @@ describe('[SSLList] 单向链表', () => {
         let llistByUnshift = null
 
         beforeEach(() => {
-            llistByUnshift = new SSLList()
+            llistByUnshift = new SSCLList()
         })
 
         it('unshift', () => {
@@ -70,7 +70,7 @@ describe('[SSLList] 单向链表', () => {
         let llistByShift = null
 
         beforeEach(() => {
-            llistByShift = new SSLList()
+            llistByShift = new SSCLList()
         })
 
         it('shift', () => {

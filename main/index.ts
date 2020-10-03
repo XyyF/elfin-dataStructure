@@ -3,11 +3,17 @@
  */
 
 import SingleSide from './linked-list/single-side'
+import SingleSideCycle from './linked-list/signle-side-cycle'
 
-export const SignleSideLList = SingleSide
-export const ElfinSignleSideLList = SingleSide
+export const SSLList = SingleSide
+export const ElfinSSLList = SingleSide
+
+export const SSCLList = SingleSideCycle
+export const ElfinSSCLList = SingleSideCycle
 
 export default {
-    SingleSideLList: SingleSide,
-    ElfinSignleSideLList: SingleSide,
+    SSLList: SingleSide,
+    ElfinSSLList: SingleSide,
+    SSCLList: SingleSideCycle,
+    ElfinSSCLList: SingleSideCycle,
 }

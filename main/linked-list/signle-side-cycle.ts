@@ -18,12 +18,12 @@ export default class SSCLList extends LinkedList {
      */
     indexOf(element: any): number {
         let index = 0
-        let currentNode = this.head.next
-        while (currentNode && currentNode.element !== element) {
-            currentNode = currentNode.next
+        let currentNode = this.head
+        while (index < this.length && currentNode.element !== element) {
+            currentNode = currentNode.next as LLNodeInterface
             index++
         }
-        return currentNode === null ? -1 : index
+        return index >= this.length ? -1 : index
     }
 
     /**
@@ -44,9 +44,10 @@ export default class SSCLList extends LinkedList {
      * 链表头部删除节点
      */
     shift(): any {
-        if (!this.head.next) return void 0
-        const value = this.head.next.element
-        this.head.next = this.head.next.next
+        if (this.isEmpty()) return void 0
+        const nextNode = this.head.next as LLNodeInterface
+        const value = nextNode.element
+        this.head.next = nextNode.next
         this.length--
         return value
     }
@@ -61,7 +62,9 @@ export default class SSCLList extends LinkedList {
             currentNode = currentNode.next
             index++
         }
-        currentNode.next = new LLNode(newElement)
+        const newNode = new LLNode(newElement)
+        newNode.next = this.tail
+        currentNode.next = newNode
         return ++this.length
     }
 
@@ -69,35 +72,19 @@ export default class SSCLList extends LinkedList {
      * 链表尾部删除节点
      */
     pop() {
-        if (this.length === 0) return void 0
+        if (this.isEmpty()) return void 0
         let index = 0
-        let currentNode = <LLNodeInterface | null>this.head
-        while(++index < this.length && currentNode) {
-            currentNode = currentNode.next
-        }
-        if (currentNode && currentNode.next) {
-            const value = currentNode.next.element
-            currentNode.next = null
-            this.length--
-            return value
-        }
-        return void 0
-    }
-
-    /**
-     * 是否包含某个元素
-     */
-    includes(element: any, index: number = 0): boolean {
-        let currentIdx = 0
         let currentNode = this.head.next
-        while(currentNode) {
-            if (currentIdx >= index && currentNode.element === element) {
-                return true
-            }
-            currentNode = currentNode.next
-            currentIdx++
+        while(++index < this.length && currentNode) {
+            currentNode = currentNode.next as LLNodeInterface
         }
-        return false
+        if (currentNode === null) return void 0
+
+        const value = currentNode.element
+        currentNode.next = this.tail
+        this.length--
+
+        return value
     }
 
     /**
