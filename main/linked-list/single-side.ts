@@ -43,7 +43,7 @@ export default class SSLList extends LinkedList {
      * 链表头部删除节点
      */
     shift(): any {
-        if (this.length === 0) return void 0
+        if (this.isEmpty()) return void 0
         // 如果length > 0，那么head之后是存在元素节点的
         const headNode = this.head.next as LLNodeInterface
         const value = headNode.element
@@ -64,7 +64,7 @@ export default class SSLList extends LinkedList {
             index++
         }
         const newNode = new LLNode(newElement)
-        newNode.next = this.tail
+        newNode.next = null
         currentNode.next = newNode
 
         return ++this.length
@@ -74,7 +74,7 @@ export default class SSLList extends LinkedList {
      * 链表尾部删除节点
      */
     pop() {
-        if (this.length === 0) return void 0
+        if (this.isEmpty()) return void 0
         let index = 0
         let currentNode = this.head.next
         while(++index < this.length && currentNode) {
@@ -83,7 +83,7 @@ export default class SSLList extends LinkedList {
         if (currentNode === null) return void 0
 
         const value = currentNode.element
-        currentNode.next = this.tail
+        currentNode.next = null
         this.length--
             
         return value
@@ -108,7 +108,7 @@ export default class SSLList extends LinkedList {
     /**
      * 将链表数据转化为数据结构
      */
-    transLListToArray() {
+    transToArray() {
         const arr = []
         let index = 0
         let currentNode = this.head

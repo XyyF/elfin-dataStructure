@@ -35,4 +35,8 @@ export class LinkedList {
         const tail = Symbol('tail')
         this.tail = new LLNode(tail)
     }
+
+    isEmpty(): boolean {
+        return this.length === 0
+    }
 }
