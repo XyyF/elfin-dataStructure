@@ -17,18 +17,6 @@ export default class SSCLList extends LinkedList {
         this.head.next = this.tail
         this.tail.next = this.head
     }
-    /**
-     * 通过下标查找节点
-     */
-    indexOf(element: any): number {
-        let index = 0
-        let currentNode = this.head
-        while (index < this.length && currentNode.element !== element) {
-            currentNode = currentNode.next as LLNodeInterface
-            index++
-        }
-        return index >= this.length ? -1 : index
-    }
 
     /**
      * 链表头部插入节点
@@ -78,17 +66,17 @@ export default class SSCLList extends LinkedList {
     pop() {
         if (this.isEmpty()) return void 0
         let index = 0
-        let currentNode = this.head.next
-        while(++index < this.length && currentNode) {
+        let currentNode = this.head
+        while(++index < this.length) {
             currentNode = currentNode.next as LLNodeInterface
         }
         if (currentNode === null) return void 0
 
-        const value = currentNode.element
+        const tailNode = currentNode.next as LLNodeInterface
         currentNode.next = this.tail
         this.length--
 
-        return value
+        return tailNode.element
     }
 
     /**

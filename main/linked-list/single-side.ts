@@ -13,19 +13,6 @@ export default class SSLList extends LinkedList {
     constructor() {
         super()
     }
-    /**
-     * 通过下标查找节点
-     */
-    indexOf(element: any): number {
-        let index = 0
-        let currentNode = this.head.next
-        while (currentNode && currentNode.element !== element) {
-            currentNode = currentNode.next
-            index++
-        }
-
-        return currentNode === null ? -1 : index
-    }
 
     /**
      * 链表头部插入节点
@@ -77,17 +64,16 @@ export default class SSLList extends LinkedList {
     pop() {
         if (this.isEmpty()) return void 0
         let index = 0
-        let currentNode = this.head.next
-        while(++index < this.length && currentNode) {
+        let currentNode = this.head
+        while(++index < this.length) {
             currentNode = currentNode.next as LLNodeInterface
         }
         if (currentNode === null) return void 0
-
-        const value = currentNode.element
+        const tailNode = currentNode.next as LLNodeInterface
         currentNode.next = null
         this.length--
             
-        return value
+        return tailNode.element
     }
 
     /**
