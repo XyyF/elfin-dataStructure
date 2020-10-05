@@ -103,7 +103,7 @@ export default class DSLList<T> extends LinkedList<T> {
      * 将链表数据转化为数据结构
      */
     transToArray(): T[] {
-        const arr = []
+        const arr: T[] = []
         let index = 0
         let currentNode = this.head as LLNodeInterface<any>
         while (index < this.length) {
