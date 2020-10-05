@@ -1,33 +1,35 @@
 /**
  * Node 链表节点
  */
-export class LLNode {
+export class LLNode<T> {
     // 节点值
-    element: any;
+    element: T;
     // 后驱节点
-    next: LLNodeInterface | null = null;
+    next: LLNodeInterface<any> | null = null;
     // 前驱节点
-    prev: LLNodeInterface | null = null;
+    prev: LLNodeInterface<any> | null = null;
     
-    constructor(element: any) {
+    constructor(element: T) {
         this.element = element
     }
 }
 
-export interface LLNodeInterface extends LLNode {}
-export abstract class LinkedList {
+[].pop()
+
+export interface LLNodeInterface<T> extends LLNode<T> {}
+export abstract class LinkedList<T> {
     // 虚拟头节点
-    head: LLNodeInterface;
+    head: LLNodeInterface<symbol>;
     // 虚拟尾节点
-    tail: LLNodeInterface;
+    tail: LLNodeInterface<symbol>;
     // 真实节点长度
     length: number = 0;
     
     constructor() {
         const head = Symbol('head')
-        this.head = new LLNode(head)
+        this.head = new LLNode<symbol>(head)
         const tail = Symbol('tail')
-        this.tail = new LLNode(tail)
+        this.tail = new LLNode<symbol>(tail)
     }
 
     isEmpty(): boolean {

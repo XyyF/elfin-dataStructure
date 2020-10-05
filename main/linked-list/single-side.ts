@@ -6,7 +6,7 @@ import {LLNode, LLNodeInterface, LinkedList} from './index'
 /**
  * 链表容器 -- 单向链表
  */
-export default class SSLList extends LinkedList {
+export default class SSLList<T> extends LinkedList<T> {
     /**
      * 使用head占位头节点
      */
@@ -18,8 +18,8 @@ export default class SSLList extends LinkedList {
      * 链表头部插入节点
      */
     unshift(): number {
-        Array.prototype.forEach.call(arguments, (newElement: any) => {
-            const newNode = new LLNode(newElement)
+        Array.prototype.forEach.call(arguments, (newElement: T) => {
+            const newNode = new LLNode<T>(newElement)
             // tips: 注意操作顺序
             newNode.next = this.head.next
             this.head.next = newNode
@@ -32,10 +32,10 @@ export default class SSLList extends LinkedList {
     /**
      * 链表头部删除节点
      */
-    shift(): any {
+    shift(): T | void {
         if (this.isEmpty()) return void 0
         // 如果length > 0，那么head之后是存在元素节点的
-        const headNode = this.head.next as LLNodeInterface
+        const headNode = this.head.next as LLNodeInterface<T>
         const value = headNode.element
         this.head.next = headNode.next
         this.length--
@@ -46,11 +46,11 @@ export default class SSLList extends LinkedList {
     /**
      * 链表尾部插入节点
      */
-    push(newElement: any): number {
+    push(newElement: T): number {
         let index = 0
-        let currentNode = this.head
+        let currentNode = this.head as LLNodeInterface<any> 
         while(index < this.length) {
-            currentNode = currentNode.next as LLNodeInterface
+            currentNode = currentNode.next as LLNodeInterface<T>
             index++
         }
         currentNode.next = new LLNode(newElement)
@@ -64,12 +64,12 @@ export default class SSLList extends LinkedList {
     pop() {
         if (this.isEmpty()) return void 0
         let index = 0
-        let currentNode = this.head
+        let currentNode = this.head as LLNodeInterface<any>
         while(++index < this.length) {
-            currentNode = currentNode.next as LLNodeInterface
+            currentNode = currentNode.next as LLNodeInterface<T>
         }
         if (currentNode === null) return void 0
-        const tailNode = currentNode.next as LLNodeInterface
+        const tailNode = currentNode.next as LLNodeInterface<T>
         currentNode.next = null
         this.length--
             
@@ -82,9 +82,9 @@ export default class SSLList extends LinkedList {
     transToArray() {
         const arr = []
         let index = 0
-        let currentNode = this.head
+        let currentNode = this.head as LLNodeInterface<any>
         while (index < this.length) {
-            currentNode = currentNode.next as LLNodeInterface
+            currentNode = currentNode.next as LLNodeInterface<T>
             arr.push(currentNode.element)
             index++
         }

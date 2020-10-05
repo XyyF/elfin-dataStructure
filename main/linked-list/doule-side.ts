@@ -6,9 +6,10 @@ import {LLNode, LLNodeInterface, LinkedList} from './index'
 /**
  * 链表容器 -- 双向链表
  */
-export default class DSLList extends LinkedList {
+export default class DSLList<T> extends LinkedList<T> {
     /**
      * 使用head占位头节点
+     * 使用tail占位尾节点
      */
     constructor() {
         super()
@@ -24,7 +25,7 @@ export default class DSLList extends LinkedList {
         Array.prototype.forEach.call(arguments, (newElement: any) => {
             const newNode = new LLNode(newElement)
             // tips: 注意操作顺序
-            const currentNextNode = this.head.next as LLNodeInterface
+            const currentNextNode = this.head.next as LLNodeInterface<T>
             currentNextNode.prev = newNode
             newNode.next = currentNextNode
             newNode.prev = this.head
@@ -44,11 +45,11 @@ export default class DSLList extends LinkedList {
         // head - node2 - node1
         // head - node1
         // TODO
-        const deleteNode = this.head.next as LLNodeInterface
-        const nextNode = deleteNode.next as LLNodeInterface
+        const deleteNode = this.head.next as LLNodeInterface<any>
+        const nextNode = deleteNode.next as LLNodeInterface<any>
         const value = deleteNode.element
-        this.head.next = deleteNode.next
-        deleteNode.next.prev
+        this.head.next = deleteNode.next as LLNodeInterface<any>
+        (deleteNode.next as LLNodeInterface<any>).prev
         this.length--
 
         return value
@@ -61,7 +62,7 @@ export default class DSLList extends LinkedList {
         let index = 0
         let currentNode = this.head
         while(index < this.length) {
-            currentNode = currentNode.next as LLNodeInterface
+            currentNode = currentNode.next as LLNodeInterface<any>
             index++
         }
         currentNode.next = new LLNode(newElement)
@@ -77,10 +78,10 @@ export default class DSLList extends LinkedList {
         let index = 0
         let currentNode = this.head
         while(++index < this.length) {
-            currentNode = currentNode.next as LLNodeInterface
+            currentNode = currentNode.next as LLNodeInterface<any>
         }
         if (currentNode === null) return void 0
-        const tailNode = currentNode.next as LLNodeInterface
+        const tailNode = currentNode.next as LLNodeInterface<any>
         currentNode.next = null
         this.length--
             
@@ -95,7 +96,7 @@ export default class DSLList extends LinkedList {
         let index = 0
         let currentNode = this.head
         while (index < this.length) {
-            currentNode = currentNode.next as LLNodeInterface
+            currentNode = currentNode.next as LLNodeInterface<any>
             arr.push(currentNode.element)
             index++
         }

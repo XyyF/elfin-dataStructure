@@ -6,7 +6,7 @@ import {LLNode, LLNodeInterface, LinkedList} from './index'
 /**
  * 链表容器 -- 单向循环链表
  */
-export default class SSCLList extends LinkedList {
+export default class SSCLList<T> extends LinkedList<T> {
     /**
      * 使用head占位头节点
      * 使用tail占位尾节点
@@ -22,8 +22,8 @@ export default class SSCLList extends LinkedList {
      * 链表头部插入节点
      */
     unshift(): number {
-        Array.prototype.forEach.call(arguments, (newElement: any) => {
-            const newNode = new LLNode(newElement)
+        Array.prototype.forEach.call(arguments, (newElement: T) => {
+            const newNode = new LLNode<T>(newElement)
             // tips: 注意操作顺序
             newNode.next = this.head.next
             this.head.next = newNode
@@ -35,9 +35,9 @@ export default class SSCLList extends LinkedList {
     /**
      * 链表头部删除节点
      */
-    shift(): any {
+    shift(): T | void {
         if (this.isEmpty()) return void 0
-        const nextNode = this.head.next as LLNodeInterface
+        const nextNode = this.head.next as LLNodeInterface<T>
         const value = nextNode.element
         this.head.next = nextNode.next
         this.length--
@@ -47,11 +47,11 @@ export default class SSCLList extends LinkedList {
     /**
      * 链表尾部插入节点
      */
-    push(newElement: any): number {
+    push(newElement: T): number {
         let index = 0
-        let currentNode = this.head
+        let currentNode = this.head as LLNodeInterface<any>
         while(index < this.length) {
-            currentNode = currentNode.next as LLNodeInterface
+            currentNode = currentNode.next as LLNodeInterface<T>
             index++
         }
         const newNode = new LLNode(newElement)
@@ -66,13 +66,13 @@ export default class SSCLList extends LinkedList {
     pop() {
         if (this.isEmpty()) return void 0
         let index = 0
-        let currentNode = this.head
+        let currentNode = this.head as LLNodeInterface<any>
         while(++index < this.length) {
-            currentNode = currentNode.next as LLNodeInterface
+            currentNode = currentNode.next as LLNodeInterface<T>
         }
         if (currentNode === null) return void 0
 
-        const tailNode = currentNode.next as LLNodeInterface
+        const tailNode = currentNode.next as LLNodeInterface<T>
         currentNode.next = this.tail
         this.length--
 
@@ -85,9 +85,9 @@ export default class SSCLList extends LinkedList {
     transToArray() {
         const arr = []
         let index = 0
-        let currentNode = this.head
+        let currentNode = this.head as LLNodeInterface<any>
         while (index < this.length) {
-            currentNode = currentNode.next as LLNodeInterface
+            currentNode = currentNode.next as LLNodeInterface<T>
             arr.push(currentNode.element)
             index++
         }
