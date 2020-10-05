@@ -61,7 +61,7 @@ export default class SSLList<T> extends LinkedList<T> {
     /**
      * 链表尾部删除节点
      */
-    pop() {
+    pop(): T | void {
         if (this.isEmpty()) return void 0
         let index = 0
         let currentNode = this.head as LLNodeInterface<any>
@@ -79,7 +79,7 @@ export default class SSLList<T> extends LinkedList<T> {
     /**
      * 将链表数据转化为数据结构
      */
-    transToArray() {
+    transToArray(): T[] {
         const arr = []
         let index = 0
         let currentNode = this.head as LLNodeInterface<any>

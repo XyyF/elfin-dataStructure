@@ -22,8 +22,10 @@ export default class DSLList<T> extends LinkedList<T> {
      * 链表头部插入节点
      */
     unshift(): number {
-        Array.prototype.forEach.call(arguments, (newElement: any) => {
-            const newNode = new LLNode(newElement)
+        Array.prototype.forEach.call(arguments, (newElement: T) => {
+            const newNode = new LLNode<T>(newElement)
+            // head - node1 - tail
+            // head - node2 - node1 - tail 
             // tips: 注意操作顺序
             const currentNextNode = this.head.next as LLNodeInterface<T>
             currentNextNode.prev = newNode
@@ -39,33 +41,39 @@ export default class DSLList<T> extends LinkedList<T> {
     /**
      * 链表头部删除节点
      */
-    shift(): any {
+    shift(): T | void {
         if (this.isEmpty()) return void 0
         // 如果length > 0，那么head之后是存在元素节点的
-        // head - node2 - node1
-        // head - node1
-        // TODO
-        const deleteNode = this.head.next as LLNodeInterface<any>
-        const nextNode = deleteNode.next as LLNodeInterface<any>
-        const value = deleteNode.element
-        this.head.next = deleteNode.next as LLNodeInterface<any>
-        (deleteNode.next as LLNodeInterface<any>).prev
+        // head - node2 - node1 - tail
+        // head - node1 - tail
+        // 要删除的节点
+        const deleteNode = this.head.next as LLNodeInterface<T>
+        // 要删除节点之后的节点
+        const nextDeleteNode = deleteNode.next as LLNodeInterface<T> 
+        this.head.next = nextDeleteNode
+        nextDeleteNode.prev = this.head
         this.length--
 
-        return value
+        return deleteNode.element
     }
 
     /**
      * 链表尾部插入节点
      */
-    push(newElement: any): number {
+    push(newElement: T): number {
         let index = 0
-        let currentNode = this.head
+        let currentNode = this.head as LLNodeInterface<any>
         while(index < this.length) {
-            currentNode = currentNode.next as LLNodeInterface<any>
+            currentNode = currentNode.next as LLNodeInterface<T>
             index++
         }
-        currentNode.next = new LLNode(newElement)
+        // head - node1 - tail
+        // head - node1 - node2 - tail
+        const newNode = new LLNode(newElement)
+        currentNode.next = newNode
+        newNode.prev = currentNode
+        newNode.next = this.tail
+        this.tail.prev = newNode
 
         return ++this.length
     }
@@ -73,16 +81,19 @@ export default class DSLList<T> extends LinkedList<T> {
     /**
      * 链表尾部删除节点
      */
-    pop() {
+    pop(): T | void {
         if (this.isEmpty()) return void 0
         let index = 0
-        let currentNode = this.head
+        let currentNode = this.head as LLNodeInterface<any>
         while(++index < this.length) {
-            currentNode = currentNode.next as LLNodeInterface<any>
+            currentNode = currentNode.next as LLNodeInterface<T>
         }
         if (currentNode === null) return void 0
-        const tailNode = currentNode.next as LLNodeInterface<any>
-        currentNode.next = null
+        // head - node1 - node2 - tail
+        // head - node1 - tail
+        const tailNode = currentNode.next as LLNodeInterface<T>
+        currentNode.next = this.tail
+        this.tail.prev = currentNode
         this.length--
             
         return tailNode.element
@@ -91,12 +102,12 @@ export default class DSLList<T> extends LinkedList<T> {
     /**
      * 将链表数据转化为数据结构
      */
-    transToArray() {
+    transToArray(): T[] {
         const arr = []
         let index = 0
-        let currentNode = this.head
+        let currentNode = this.head as LLNodeInterface<any>
         while (index < this.length) {
-            currentNode = currentNode.next as LLNodeInterface<any>
+            currentNode = currentNode.next as LLNodeInterface<T>
             arr.push(currentNode.element)
             index++
         }
