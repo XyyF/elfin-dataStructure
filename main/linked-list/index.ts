@@ -1,14 +1,7 @@
-export interface LLNodeInterface {
-    element: any;
-    next: LLNodeInterface | null;
-    prev: LLNodeInterface | null;
-}
-
 /**
  * Node 链表节点
- * @param element 当前节点数据
  */
-export class LLNode implements LLNodeInterface {
+export class LLNode {
     // 节点值
     element: any;
     // 后驱节点
@@ -21,7 +14,8 @@ export class LLNode implements LLNodeInterface {
     }
 }
 
-export class LinkedList {
+export interface LLNodeInterface extends LLNode {}
+export abstract class LinkedList {
     // 虚拟头节点
     head: LLNodeInterface;
     // 虚拟尾节点
