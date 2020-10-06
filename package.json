@@ -19,6 +19,7 @@
   "bugs": {
     "url": "https://github.com/XyyF/elfin-dataStructure/issues"
   },
+  "typings": "types/index.d.ts",
   "homepage": "https://github.com/XyyF/elfin-dataStructure#readme",
   "devDependencies": {
     "@babel/core": "^7.11.6",
