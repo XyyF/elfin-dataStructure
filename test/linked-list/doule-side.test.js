@@ -1,4 +1,4 @@
-import {DSLList} from '@/build/bundle'
+import {DSLList} from '@/dist/elfinDS'
 
 describe('[DSLList] 双向链表', () => {
     describe('实例func__push', () => {

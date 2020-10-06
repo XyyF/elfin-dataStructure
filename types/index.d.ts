@@ -1,7 +1,7 @@
-declare namespace bundle {
+declare namespace elfinDS {
     class SSLList {}
 }
 
-export as namespace bundle
+export as namespace elfinDS
 
-export = bundle
+export = elfinDS

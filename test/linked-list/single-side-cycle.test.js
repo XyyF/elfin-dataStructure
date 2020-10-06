@@ -1,4 +1,4 @@
-import {SSCLList} from '@/build/bundle'
+import {SSCLList} from '@/dist/elfinDS'
 
 describe('[SSCLList] 单向循环链表', () => {
 

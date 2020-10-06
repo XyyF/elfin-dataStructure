@@ -1,4 +1,4 @@
-import {SSLList} from '@/build/bundle'
+import {SSLList} from '@/dist/elfinDS'
 
 describe('[SSLList] 单向链表', () => {
     describe('实例func__push', () => {

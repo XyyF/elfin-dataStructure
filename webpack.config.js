@@ -2,11 +2,11 @@ const path = require('path')
 
 module.exports = {
   mode: 'development',
-  entry: './main/index.ts',
+  entry: './src/index.ts',
   output: {
-    filename: 'bundle.js',
+    filename: 'elfinDS.js',
     libraryTarget: 'umd',
-    path: path.resolve(__dirname, './build')
+    path: path.resolve(__dirname, './dist')
   },
   resolve: {
     extensions: [".ts", ".tsx", ".js"]
