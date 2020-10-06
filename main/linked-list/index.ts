@@ -14,8 +14,6 @@ export class LLNode<T> {
     }
 }
 
-[].pop()
-
 export interface LLNodeInterface<T> extends LLNode<T> {}
 export abstract class LinkedList<T> {
     // 虚拟头节点
