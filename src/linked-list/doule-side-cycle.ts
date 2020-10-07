@@ -1,21 +1,23 @@
 /**
- * Created by rengar on 2020/10/4.
+ * Created by rengar on 2020/10/7.
  */
 import {LLNode, LLNodeInterface, LinkedList} from './index'
 
 /**
- * 链表容器 -- 双向链表
+ * 链表容器 -- 双向循环链表
  */
-export default class DSLList<T> extends LinkedList<T> {
+export default class DSCLList<T> extends LinkedList<T> {
     /**
      * 使用head占位头节点
      * 使用tail占位尾节点
      */
     constructor() {
         super()
-        // 双向链表特点
+        // 双向循环链表特点
         this.head.next = this.tail
+        this.head.prev = this.tail
         this.tail.prev = this.head
+        this.tail.next = this.head
     }
 
     /**
