@@ -6,6 +6,7 @@ import SinglySide from './linked-list/singly-side'
 import SinglySideCycle from './linked-list/singly-side-cycle'
 import DoubleSide from './linked-list/doule-side'
 import DoubleSideCycle from './linked-list/doule-side-cycle'
+import Lru from './LRU/index'
 
 export const SSLList = SinglySide
 export const ElfinSSLList = SinglySide
@@ -19,6 +20,9 @@ export const ElfinDSLList = DoubleSide
 export const DSCLList = DoubleSideCycle
 export const ElfinDSCLList = DoubleSideCycle
 
+export const LRU = Lru
+export const ElfinLRU = Lru
+
 export default {
     SSLList: SinglySide,
     ElfinSSLList: SinglySide,
@@ -28,4 +32,5 @@ export default {
     ElfinDSLList: DoubleSide,
     DSCLList: DoubleSideCycle,
     ElfinDSCLList: DoubleSideCycle,
+    ElfinLRU: Lru,
 }

@@ -28,7 +28,7 @@ class DSLList<T> extends LinkedList {
   /**
    * 链表头部删除节点
    */
-  shift(): T | void {
+  shift() {
       if (this.isEmpty()) return void 0
       // 如果length > 0，那么head之后是存在元素节点的
       // head - node2 - node1 - tail
@@ -41,7 +41,7 @@ class DSLList<T> extends LinkedList {
       nextDeleteNode.prev = this.head
       this.length--
 
-      return deleteNode.element
+      return deleteNode
   }
 
   /**
@@ -84,7 +84,7 @@ interface Cache<T> {
   [prop: string]: LLNodeInterface<T>
 }
 
-export class LRU<T> implements LRUInterface<T> {
+export default class LRU<T> implements LRUInterface<T> {
   cap = 100;
   cache = {} as Cache<T>;
   linkList = new DSLList<T>();
@@ -94,14 +94,20 @@ export class LRU<T> implements LRUInterface<T> {
   }
 
   set(key: string, value: T) {
+    const cacheNode = this.cache[key] as LRUNode<T>
+    if (cacheNode) {
+      this.linkList.delete(cacheNode)
+    } else {
+      this.cap--
+    }
     // 更新使用时间
     this.linkList.push(key, value)
     this.cache[key] = this.linkList.tail.prev as LRUNode<T>
-
-    if (this.cap <= 0) {
+    
+    if (this.cap < 0) {
       // 需要弹出元素
-      const element = this.linkList.shift()
-
+      const node = this.linkList.shift() as LRUNode<T>
+      delete this.cache[node.key]
     }
   }
 
