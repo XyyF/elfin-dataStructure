@@ -6,7 +6,7 @@ import {LLNode, LLNodeInterface, LinkedList} from './index'
 /**
  * 链表容器 -- 双向链表
  */
-export default class DSLList<T> extends LinkedList<T> {
+export default class DSLList<T> extends LinkedList {
     /**
      * 使用head占位头节点
      * 使用tail占位尾节点
@@ -88,6 +88,18 @@ export default class DSLList<T> extends LinkedList<T> {
         this.length--
             
         return tailNode.element
+    }
+
+    /**
+     * 删除节点自身
+     */
+    delete(node: LLNode<T>): number {
+        const preItemNode = node.prev as LLNode<T>
+        const nextItemNode = node.next as LLNode<T>
+        preItemNode.next = nextItemNode
+        nextItemNode.prev = preItemNode
+
+        return this.length
     }
 
     /**

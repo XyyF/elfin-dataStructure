@@ -6,7 +6,7 @@ import {LLNode, LLNodeInterface, LinkedList} from './index'
 /**
  * 链表容器 -- 单向循环链表
  */
-export default class SSCLList<T> extends LinkedList<T> {
+export default class SSCLList<T> extends LinkedList {
     /**
      * 使用head占位头节点
      * 使用tail占位尾节点
