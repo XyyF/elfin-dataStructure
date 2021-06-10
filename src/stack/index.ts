@@ -27,4 +27,15 @@ export default class Stack<T> implements StackInterface<T> {
     }
     return this.elements.pop();
   }
+
+  top(): T | undefined {
+    if (this.isEmpty()) {
+      return void 0;
+    }
+    return this.elements[this.length - 1];
+  }
+
+  isEmpty(): boolean {
+    return this.length === 0;
+  }
 };
