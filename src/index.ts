@@ -8,6 +8,7 @@ import DoubleSide from './linked-list/doule-side';
 import DoubleSideCycle from './linked-list/doule-side-cycle';
 import Lru from './LRU/index';
 import stack from './stack/index';
+import queue from './queue/index';
 
 // 单向链表
 export const SSLList = SinglySide;
@@ -30,6 +31,10 @@ export const ElfinLRU = Lru;
 export const Stack = stack;
 export const ElfinStack = stack;
 
+// 队列
+export const Queue = queue;
+export const ElfinQueue = queue;
+
 export default {
   SSLList: SinglySide,
   ElfinSSLList: SinglySide,
@@ -42,4 +47,6 @@ export default {
   ElfinLRU: Lru,
   Stack,
   ElfinStack,
+  Queue,
+  ElfinQueue,
 };
