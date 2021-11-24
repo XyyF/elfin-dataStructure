@@ -19,7 +19,7 @@ export default class CircularQueue<T> implements QueueInterface<T> {
   // 真实节点长度
   length = 0;
 
-  constructor(length: number = 0) {
+  constructor(length = 0) {
     this.elements = [];
     this.length = length + 1;
   }
