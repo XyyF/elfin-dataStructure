@@ -1,3 +1,3 @@
 module.exports = {
-  extends: ['@elfiner/eslint-config-elfin/main/ts.eslintrc.js'],
+  extends: ['@elfiner/eslint-config-elfin', '@elfiner/eslint-config-elfin/ts'],
 };
